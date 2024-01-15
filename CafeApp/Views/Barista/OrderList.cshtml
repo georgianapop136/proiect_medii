@@ -1,0 +1,98 @@
+@model IEnumerable<Order>
+
+@{
+    ViewData["Header"] = "OrderList";
+    ViewBag.Title = "OrderList";
+}
+
+<div style="display: flex; width: 55%; justify-content: space-between; margin: 0 auto; font-size: 24px;">
+
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Order Time</div>
+
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                @{
+                    int hours = order.OrderDate.Hour;
+                    int minutes = order.OrderDate.Minute;
+
+                    string formattedHours = hours < 10 ? "0" + hours.ToString() : hours.ToString();
+                    string formattedMinutes = minutes < 10 ? "0" + minutes.ToString() : minutes.ToString();
+
+                    string currentTimeString = formattedHours + ":" + formattedMinutes;
+                }
+                @currentTimeString
+            </div>
+        }
+    </div>
+
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Table No</div>
+
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                @order.TableNo
+            </div>
+        }
+    </div>
+    
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Customer Name</div>
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                @order.CustomerName
+            </div>
+        }
+    </div>
+
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Service Status</div>
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                <input style="width: 30px; height: 30px; cursor: pointer;" type="checkbox" name="IsServed" value="true"
+                @(order.IsServed ? "checked='checked'" : "") disabled />
+            </div>
+        }
+    </div>
+
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Payment Status</div>
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                <input style="width: 30px; height: 30px; cursor: pointer;" type="checkbox" name="IsServed" value="true"
+                @(order.IsPaid ? "checked='checked'" : "") disabled />
+            </div>
+        }
+    </div>
+
+    <div style="text-align: center;">
+        <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid; opacity: 0;">Update Order</div>
+        @foreach (var order in Model)
+        {
+            <div style="margin-bottom: 30px;">
+                <a asp-controller="Barista" asp-action="OrderDetails" asp-route-id="@order.OrderId" style="text-decoration: none;
+                        color: #F8F8F8;
+                        background-color: #2E2928;
+                        font-family: 'Raleway', sans-serif;
+                        padding: 10px 13px;
+                        border-radius: 14px; margin-right: 15px;
+                        transition: all 0.3s;" onmouseover="this.style.opacity=0.8"
+                    onmouseout="this.style.opacity=1">Details</a>
+                <a asp-controller="Barista" asp-action="Delete" asp-route-id="@order.OrderId" style="text-decoration: none;
+                        color: #F8F8F8;
+                        background-color: #b80f2b;
+                        font-family: 'Raleway', sans-serif;
+                        padding: 10px 13px;
+                        border-radius: 14px;
+                        transition: all 0.3s;" onmouseover="this.style.opacity=0.8"
+                    onmouseout="this.style.opacity=1">Delete</a>
+            </div>
+        }
+    </div>
+</div>
+<div style="height: 15vh;"></div>

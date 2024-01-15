@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    font-size: 16px;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 44px;
+}
+
+body {
+    background-color: #F8F8F8;
+    color: #2E2928;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    margin: 0;
+}
+
+.cup {
+    width: 400px;
+    height: 400px;
+    z-index: -1;
+    opacity: 1;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.welcomeHeader {
+    width: 65%;
+    margin-left: 85px;
+    margin-bottom: 15px;
+}
+
+.right-intro {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h2 {
+    font-size: 36px;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 60px;
+}
+
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.commonBtn {
+    width: 10vw;
+    height: 5vh;
+    font-size: 24px;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    background-color: #b80f2b;
+    text-decoration: none;
+    text-align: center;
+    color: #F8F8F8;
+    line-height: 5vh;
+    border-radius: 14px;
+}
+
+.customerBtn {
+    margin-right: 0px;
+}
+
+.customerBtn:hover {
+    opacity: .8;
+    transition: all 0.3s;
+}
+
+.managerBtn {
+    margin-right: 40px;
+}
+
+.managerBtn:hover {
+    opacity: .8;
+    transition: all 0.3s;
+}
+
+.loginForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginInput {
+    background-color: #2e292827;
+    width: 15vw;
+    height: 5vh;
+    padding: 8px;
+    border: none;
+    font-size: 24px;
+}
+
+.loginInput:first-child {
+    margin-bottom: 15px;
+}
+
+.loginInput:focus {
+    transition: all 0.3s;
+    outline: 1px dashed #2E2928;
+}
+
+.loginInput::placeholder {
+    color: #2E2928;
+    opacity: .7;
+}
+
+.password {
+    margin: 15px 0;
+}
+
+.loginBtn {
+    background-color: #b80f2b;
+    color: #f8f8f8;
+    border: none;
+    width: 10vw;
+    height: 5vh;
+    transition: all 0.3s;
+    margin-top: 15px;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 14px;
+    font-size: 24px;
+}
+
+.loginBtn:hover {
+    cursor: pointer;
+    opacity: .8;
+    transition: all 0.3s;
+}
+
+.loginHeader {
+    margin-bottom: 15px;
+    font-size: 48px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 30px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+}
+
+#errorMessage {
+    transition: all 0.3s;
+}

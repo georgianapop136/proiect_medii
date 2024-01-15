@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+        <a id="orderListLink"  class="nav-link text-dark" asp-area="" asp-controller="Barista" asp-action="OrderList">Loading...</a>
+}
+    else
+{
+    <div style="display: flex; flex-direction: row; gap: 10px;">
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("OrderList", "Barista")">Login</a>
+        </li>
+      </div>
+}
+</ul>
+
+<script>
+    // Get the anchor element by its ID
+    var orderListLink = document.getElementById("orderListLink");
+
+    // Check if the element exists (user is signed in)
+    if (orderListLink) {
+        // Trigger the click event
+        orderListLink.click();
+    }
+</script>

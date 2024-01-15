@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - LOS SEYMANOS EMIRHANOS</title>
+    <link rel="icon" href="~/images/title_bar_icon.png" type="image/png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap" rel="stylesheet">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+
+<body id="body">
+    <header>
+        <nav style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 82%;">
+                @{
+                    string currentPath = ViewContext.HttpContext.Request.Path;
+                    string controller = currentPath.Contains("Barista") || currentPath.Contains("Product") ? "Barista" :
+                    "Home";
+                    string action = currentPath.Contains("Barista") || currentPath.Contains("Product") ? "OrderList" :
+                    "Index";
+                }
+                <a asp-controller="@controller" asp-action="@action"><img src="/images/logo.png" alt="Logo"
+                        width="100px" height="100px" class="logo"></a>
+
+                <h2 style="font-family:'Raleway',sans-serif; font-size: 48px; margin-left: 150px;">@ViewData["Header"]
+                </h2>
+                <div></div>
+            </div>
+            <div>
+                @if (controller == "Barista")
+                {
+                    <a style="text-decoration: none; color: #f8f8f8; background-color: rgba(45,41,40,0.5); padding: 10px 22px;
+                    border-radius: 14px; transition: all 0.3s;" asp-action="ProductList" asp-controller="Barista"
+                        onmouseenter="this.style.opacity=0.9" onmouseout="this.style.opacity=1">Products</a>
+                    <a style="text-decoration: none; margin-left: 30px; color: #f8f8f8; background-color: rgba(45,41,40,0.5); padding: 10px 13px;
+                    border-radius: 14px; transition: all 0.3s;" asp-action="Signup" asp-controller="Barista"
+                        onmouseenter="this.style.opacity=0.9" onmouseout="this.style.opacity=1">Add Barista</a>
+                    <a style="text-decoration: none; margin-left: 30px; color: #f8f8f8; background-color: rgba(45,41,40,0.5); padding: 10px 13px;
+                    border-radius: 14px; transition: all 0.3s;" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")" method="post"
+                       onmouseenter="this.style.opacity=0.9" onmouseout="this.style.opacity=1">Logout</a>
+
+                   
+                }
+            </div>
+
+        </nav>
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2023 - LOS SEYMANOS EMIRHANOS - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+
+<script>
+    @if (ViewBag.Title?.ToString() == "Add Barista")
+    {
+        @:var body = document.getElementById("body");
+        @:var image = document.createElement("img");
+        @:image.src = "../images/logo.png";
+        @:image.style.position = "absolute";
+        @:image.style.top = "20%";
+        @:image.style.right = "20%";
+        @:image.style.opacity = "0.1";
+        @:image.style.zIndex = "-1";
+
+        @:body.appendChild(image);
+
+    }
+</script>

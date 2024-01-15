@@ -1,0 +1,75 @@
+@model CafeApp.Models.Product
+
+@{
+    ViewBag.Title = "Create Product";
+    ViewData["Header"] = "Create New Product";
+}
+<link rel="stylesheet" href="~/css/createProduct.css">
+
+@using (Html.BeginForm())
+{
+    <div style="width: 22%; font-size: 24px; display: flex; flex-direction: column; margin: 0 auto;">
+    @Html.AntiForgeryToken()
+
+    <div style="display: flex; align-items: center; margin-bottom: 30px; justify-content: space-between;">
+        <label style="margin-right: 45px; font-weight: bold;" asp-for="@Model.Name">Name:</label>
+        <input style="
+        background-color: #2e292827;
+        width: 13vw;
+        height: 5vh;
+        padding: 8px;
+        border: transparent;
+        border-radius: 10px;
+        transition: all 0.3s;" onfocus="this.style.transition='all 0.3s'; this.style.outline='1px dashed #2E2928';"
+            onblur="this.style.transition=''; this.style.outline='';" type="text" asp-for="@Model.Name">
+    </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 30px;  justify-content: space-between;">
+        <label style="margin-right: 45px; font-weight: bold;" asp-for="@Model.ImageSrc">Image Source:</label>
+        <input style="
+        background-color: #2e292827;
+        width: 13vw;
+        height: 5vh;
+        padding: 8px;
+        border: transparent;
+        border-radius: 10px;
+        transition: all 0.3s;" onfocus="this.style.transition='all 0.3s'; this.style.outline='1px dashed #2E2928';"
+            onblur="this.style.transition=''; this.style.outline='';" type="text" asp-for="@Model.ImageSrc">
+
+    </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 30px;  justify-content: space-between;">
+        <label style="margin-right: 45px; font-weight: bold;" asp-for="@Model.Details">Details:</label>
+        <input style="
+        background-color: #2e292827;
+        width: 13vw;
+        height: 5vh;
+        padding: 8px;
+        border: transparent;
+        border-radius: 10px;
+        transition: all 0.3s;" onfocus="this.style.transition='all 0.3s'; this.style.outline='1px dashed #2E2928';"
+            onblur="this.style.transition=''; this.style.outline='';" type="text" asp-for="@Model.Details">
+
+    </div>
+
+
+    <div style="display: flex; align-items: center; margin-bottom: 30px;  justify-content: space-between;">
+        <label style="margin-right: 45px; font-weight: bold;" asp-for="@Model.Price">Price:</label>
+        <input style="
+        background-color: #2e292827;
+        width: 13vw;
+        height: 5vh;
+        padding: 8px;
+        border: transparent;
+        border-radius: 10px;
+        transition: all 0.3s;" onfocus="this.style.transition='all 0.3s'; this.style.outline='1px dashed #2E2928';"
+            onblur="this.style.transition=''; this.style.outline='';" type="text" asp-for="@Model.Price">
+
+    </div>
+
+    <button style="width: 50%; margin: 0 auto; margin-top: 45px; border-radius: 14px; border: none; background-color: #b80f2b;
+    color: #f8f8f8; padding: 12px; transition: all 0.3s;" type="submit" onmouseenter="this.style.opacity=0.8"
+        onmouseleave="this.style.opacity=1" type="submit">Create</button>
+</div>
+}
+<div style="height: 15vh;"></div>

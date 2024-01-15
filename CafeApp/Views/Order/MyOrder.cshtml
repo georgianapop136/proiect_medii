@@ -1,0 +1,89 @@
+@model Tuple<Order, List<Product>, List<int>, Dictionary<int, int>>
+
+@{
+  ViewData["Header"] = "Thanks For Your Order, We'll Deliver It In A Few Minutes";
+}
+
+<div style="display: flex; width: 65%; justify-content: space-between; margin: 0 auto; font-size: 24px;">
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Customer Name</div>
+
+    <div style="margin-bottom: 30px;">
+      @Model.Item1.CustomerName
+    </div>
+
+  </div>
+
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Table Number</div>
+
+    <div style="margin-bottom: 30px;">
+      @Model.Item1.TableNo
+    </div>
+
+  </div>
+
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Order Time</div>
+
+    <div style="margin-bottom: 30px;">
+      @{
+        int hours = Model.Item1.OrderDate.Hour;
+        int minutes = Model.Item1.OrderDate.Minute;
+
+        string formattedHours = hours < 10 ? "0" + hours.ToString() : hours.ToString();
+        string formattedMinutes = minutes < 10 ? "0" + minutes.ToString() : minutes.ToString();
+
+        string currentTimeString = formattedHours + ":" + formattedMinutes;
+      }
+      @currentTimeString
+    </div>
+
+  </div>
+
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Products</div>
+
+    <div style="margin-bottom: 30px; display: flex; flex-direction: column;">
+      @{
+        foreach (var product in Model.Item2)
+        {
+          <span>@product.Name @Model.Item4[product.ProductId]x &nbsp;&nbsp;
+            ($@(product.Price * Model.Item4[product.ProductId]))</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid;">Total Price</div>
+
+    <div style="margin-bottom: 30px;">
+      $@Model.Item1.TotalPrice
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="margin-bottom: 45px; font-weight: bold; border-bottom: 1px solid; opacity: 0;">Update Order</div>
+
+    <div style="margin-bottom: 30px;">
+      <a asp-controller="Order" asp-action="Edit" asp-route-id="@Model.Item1.OrderId" style="text-decoration: none;
+                        color: #F8F8F8;
+                        background-color: #2E2928;
+                        font-family: 'Raleway', sans-serif;
+                        padding: 10px 32px;
+                        border-radius: 14px; margin-right: 15px;
+                        transition: all 0.3s;" onmouseover="this.style.opacity=0.8"
+        onmouseout="this.style.opacity=1">Edit</a>
+      <a asp-controller="Order" asp-action="Delete" asp-route-id="@Model.Item1.OrderId" style="text-decoration: none;
+                        color: #F8F8F8;
+                        background-color: #b80f2b;
+                        font-family: 'Raleway', sans-serif;
+                        padding: 10px 13px;
+                        border-radius: 14px;
+                        transition: all 0.3s;" onmouseover="this.style.opacity=0.8"
+        onmouseout="this.style.opacity=1">Delete</a>
+    </div>
+  </div>
+</div>
+<div style="height: 15vh;"></div>
