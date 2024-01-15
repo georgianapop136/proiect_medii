@@ -12,7 +12,7 @@ h1 {
 }
 
 body {
-    background-color: #F8F8F8;
+    background-color: #EFE1D3 !important;
     color: #2E2928;
     font-family: 'Lato', sans-serif;
     display: flex;
@@ -34,6 +34,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+   
 }
 
 .welcomeHeader {

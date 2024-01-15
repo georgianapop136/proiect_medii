@@ -6,16 +6,17 @@
 <div class="wrapper">
     <div class="left-intro">
         <h1 class="welcomeHeader">Welcome to</h1>
-        <img class="cup" src="/images/logo.png" alt="Logo">
+        <img class="cup" src="/images/logoNEW.png" alt="Logo">
     </div>
 
     <div class="right-intro">
         <h2>Are you a customer or a barista?</h2>
 
         <div class="linkContainer">
-            <a class="commonBtn managerBtn" asp-controller="Barista" asp-action="Login">Barista</a>
+            <a class="commonBtn managerBtn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("OrderList", "Barista")">Barista</a>
             <a class="commonBtn customerBtn" asp-controller="Order" asp-action="Create">Customer</a>
         </div>
+       
 
     </div>
 </div>

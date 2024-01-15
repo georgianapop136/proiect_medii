@@ -4,6 +4,7 @@
     overflow: auto;
     padding-right: 30px;
     padding-left: 20px;
+   
 }
 
 .productsContainer::-webkit-scrollbar, .tableContainer::-webkit-scrollbar {
