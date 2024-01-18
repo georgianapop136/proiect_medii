@@ -156,5 +156,11 @@ namespace CafeApp.Controllers
 
             return RedirectToAction("OrderList", "Barista");
         }
+
+        public IActionResult Chat()
+        {
+            return View();
+        }
+
     }
 }
