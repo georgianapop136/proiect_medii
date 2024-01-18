@@ -11,10 +11,11 @@
 
     <div class="right-intro">
         <h2>Are you a customer or a barista?</h2>
-
+        <br />      
         <div class="linkContainer">
-            <a class="commonBtn managerBtn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("OrderList", "Barista")">Barista</a>
-            <a class="commonBtn customerBtn" asp-controller="Order" asp-action="Create">Customer</a>
+ 
+            <a class="btn btn-dark commonBtn managerBtn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("OrderList", "Barista")">Barista</a>
+            <a class="btn btn-dark commonBtn customerBtn" asp-controller="Order" asp-action="Create">Customer</a>
         </div>
        
 

@@ -163,22 +163,7 @@
     opacity: .7;
 }
 
-.orderButton {
-    background-color: #b80f2b;
-    color: #f8f8f8;
-    border: none;
-    width: 10vw;
-    height: 5vh;
-    transition: all 0.3s;
-    margin-top: 15px;
-    font-family: 'Raleway', sans-serif;
-    border-radius: 14px;
-    font-size: 18px;
-}
 
-.orderButton:hover{
-    opacity: .8;
-}
 
 .addedRow{
     display: flex;
