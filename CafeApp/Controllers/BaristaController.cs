@@ -16,79 +16,6 @@ namespace CafeApp.Controllers
         }
 
 
-        //ADMİN LOGIN
-
-        public IActionResult Login()
-        {
-            var isAuthenticated = HttpContext.Session.GetString("IsAuth");
-
-            if (Convert.ToBoolean(isAuthenticated))
-            {
-                return RedirectToAction("OrderList");
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Login(Barista model)
-        {
-            if (model.Email != null)
-            {
-                var barista = _context.FindByEmail(model.Email);
-
-                if (barista != null && barista.Password == model.Password)
-                {
-                    barista.IsAuthenticated = true;
-                    HttpContext.Session.SetString("IsAuth", barista.IsAuthenticated.ToString());
-                    return RedirectToAction("OrderList");
-                }
-                else
-                {
-                    TempData["Error Message"] = "Invalid email or password!";
-                }
-            }
-            return View();
-        }
-
-        //create new admin
-
-        public IActionResult Signup()
-        {
-            var isAuthenticated = HttpContext.Session.GetString("IsAuth");
-
-            if (!Convert.ToBoolean(isAuthenticated))
-            {
-                return RedirectToAction("Login");
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Signup([Bind("Email,Password")] Barista barista)
-        {
-            if (ModelState.IsValid)
-            {
-                var Barista = _context.FindByEmail(barista.Email!);
-
-                if (Barista == null)
-                {
-                    _context.Add(barista);
-                    await _context.SaveChangesAsync();
-                    HttpContext.Session.SetString("IsAuth", "false");
-                    return RedirectToAction(nameof(Login));
-
-                }
-                else
-                {
-                    TempData["Error Message"] = "Barista is already added";
-                }
-            }
-            return View(barista);
-        }
-
         //SHOW ORDERS
         [HttpGet]
         [Authorize]
@@ -157,6 +84,7 @@ namespace CafeApp.Controllers
             return RedirectToAction("OrderList", "Barista");
         }
 
+        [Authorize]
         public IActionResult Chat()
         {
             return View();

@@ -22,30 +22,6 @@ namespace CafeApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CafeApp.Models.Barista", b =>
-                {
-                    b.Property<int>("BaristaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BaristaId"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAuthenticated")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("BaristaId");
-
-                    b.ToTable("Barista", (string)null);
-                });
-
             modelBuilder.Entity("CafeApp.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
